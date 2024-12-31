@@ -1,0 +1,57 @@
+from itertools import product
+import networkx as nx
+import matplotlib.pyplot as plt
+
+def dataAXB():
+    A_input = input()
+    B_input = input()
+  
+    args_A = A_input.split()
+    args_B = B_input.split()
+    return args_A, args_B
+    
+    """ print('A = ', args_A, ' ', 'B = ', args_B) """
+
+A, B = dataAXB()
+
+print('A = ', A, ' ', 'B = ', B)
+
+
+
+P_AB = set(product(A,B))
+
+sorted_P_AB = sorted(P_AB, key= lambda x: (x[0], x[1]))
+
+
+print('Sorted P_AB',sorted_P_AB)
+
+graf = nx.DiGraph()
+
+A_list = [1,2,3]
+
+graf.add_nodes_from([
+    '1'    
+    
+])
+
+list(sorted_P_AB)
+print(sorted_P_AB)
+
+graf.add_edges_from(sorted_P_AB) 
+
+
+
+pos = {
+
+    A[0]: (-1,0) ,
+    A[1]: (0,0),
+    A[2]: (1,0),
+    '1': (-1,1),
+    '2': (0,1),
+    '3': (1,1),
+
+}
+
+plt.figure(figsize=(10,8))
+nx.draw(graf, pos, with_labels=True,  node_size=2000, node_color="lightblue", font_size=12, font_weight="bold", arrowsize=20)
+plt.show()
